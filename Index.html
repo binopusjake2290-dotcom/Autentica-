@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трансформация Ильи Васильева | Dark Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: #0a0a0a;
+            scroll-behavior: smooth;
+        }
+        
+        .hero {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 2px solid;
+            border-image: linear-gradient(45deg, #ff0040, #00ff80, #0080ff, #ff8000) 1;
+            animation: neonGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes neonGlow {
+            from { box-shadow: 0 0 20px #ff0040, 0 0 40px #ff0040; }
+            to { box-shadow: 0 0 30px #00ff80, 0 0 50px #00ff80; }
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px #ffaa00;
+            color: #ffaa00;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+        
+        .hero-badge {
+            background: linear-gradient(45deg, #ffaa00, #ff4400);
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            display: inline-block;
+            border: 2px solid #ffaa00;
+            box-shadow: 0 0 20px rgba(255, 170, 0, 0.5);
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 60px 0;
+            background: #111;
+            margin: 20px 0;
+            border-radius: 15px;
+            border: 1px solid #333;
+            box-shadow: 0 0 30px rgba(255, 170, 0, 0.1);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #ffaa00;
+            text-shadow: 0 0 15px #ffaa00;
+        }
+        
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .card {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 170, 0, 0.3);
+        }
+        
+        .card-before {
+            border-color: #ff4400;
+            box-shadow: 0 0 15px rgba(255, 68, 0, 0.3);
+        }
+        
+        .card-after {
+            border-color: #00ff40;
+            box-shadow: 0 0 15px rgba(0, 255, 64, 0.3);
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .card-before .card-title {
+            color: #ff4400;
+            text-shadow: 0 0 10px #ff4400;
+        }
+        
+        .card-after .card-title {
+            color: #00ff40;
+            text-shadow: 0 0 10px #00ff40;
+        }
+        
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .card li {
+            margin: 12px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #ddd;
+        }
+        
+        .card-before li::before {
+            content: "❌";
+            position: absolute;
+            left: 0;
+        }
+        
+        .card-after li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        
+        .stats {
+            background: #0f0f0f;
+            border: 2px solid;
+            border-image: linear-gradient(90deg, #ff0040, #ffaa00, #00ff40, #0080ff) 1;
+            animation: borderGlow 4s linear infinite;
+        }
+        
+        @keyframes borderGlow {
+            0% { border-image-source: linear-gradient(0deg, #ff0040, #ffaa00, #00ff40, #0080ff); }
+            25% { border-image-source: linear-gradient(90deg, #ff0040, #ffaa00, #00ff40, #0080ff); }
+            50% { border-image-source: linear-gradient(180deg, #ff0040, #ffaa00, #00ff40, #0080ff); }
+            75% { border-image-source: linear-gradient(270deg, #ff0040, #ffaa00, #00ff40, #0080ff); }
+            100% { border-image-source: linear-gradient(360deg, #ff0040, #ffaa00, #00ff40, #0080ff); }
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #ffaa00;
+            box-shadow: 0 0 15px rgba(255, 170, 0, 0.2);
+            max-width: 220px;
+            margin: 0 auto;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ffaa00;
+            text-shadow: 0 0 10px #ffaa00;
+        }
+        
+        .keys-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .key-card {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            max-width: 380px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+        
+        .key-card:hover {
+            border-color: #ffaa00;
+            box-shadow: 0 0 20px rgba(255, 170, 0, 0.3);
+        }
+        
+        .key-title {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: #ffaa00;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        
+        .status-good {
+            background: #00ff40;
+            color: #000;
+            box-shadow: 0 0 10px rgba(0, 255, 64, 0.5);
+        }
+        
+        .status-progress {
+            background: #ffaa00;
+            color: #000;
+            box-shadow: 0 0 10px rgba(255, 170, 0, 0.5);
+        }
+        
+        .status-attention {
+            background: #ff4400;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(255, 68, 0, 0.5);
+        }
+        
+        .key-card p {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+        
+        .superpower-card {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid;
+            max-width: 500px;
+            transition: all 0.3s ease;
+        }
+        
+        .superpower-card:nth-child(1) {
+            border-color: #ff0040;
+            box-shadow: 0 0 20px rgba(255, 0, 64, 0.3);
+        }
+        
+        .superpower-card:nth-child(2) {
+            border-color: #00ff80;
+            box-shadow: 0 0 20px rgba(0, 255, 128, 0.3);
+        }
+        
+        .superpower-card:nth-child(3) {
+            border-color: #0080ff;
+            box-shadow: 0 0 20px rgba(0, 128, 255, 0.3);
+        }
+        
+        .superpower-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #ffaa00;
+        }
+        
+        .timeline-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline-item {
+            background: #1a1a1a;
+            margin: 25px 0;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #ffaa00;
+            box-shadow: 0 0 15px rgba(255, 170, 0, 0.2);
+            max-width: 550px;
+        }
+        
+        .timeline-title {
+            font-size: 1.3rem;
+            color: #ffaa00;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-item ul {
+            color: #ddd;
+            padding-left: 20px;
+        }
+        
+        .timeline-item li {
+            margin: 8px 0;
+        }
+        
+        .cta {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            color: #fff;
+            padding: 60px 0;
+            text-align: center;
+            border: 2px solid #ffaa00;
+            box-shadow: 0 0 30px rgba(255, 170, 0, 0.5);
+            margin-top: 30px;
+        }
+        
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ffaa00;
+            text-shadow: 0 0 20px #ffaa00;
+        }
+        
+        .cta p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .before-after {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 40px 0;
+                margin: 15px 0;
+            }
+            
+            .hero {
+                padding: 50px 0;
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ТРАНСФОРМАЦИЯ</h1>
+            <p>Илья Васильев • 26 лет • Москва</p>
+            <div class="hero-badge">
+                Стратегический продюсер полного цикла
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">ДО И ПОСЛЕ ПОИСКА АУТЕНТИЧНОСТИ</h2>
+            <div class="before-after">
+                <div class="card card-before">
+                    <h3 class="card-title">БЫЛО</h3>
+                    <ul>
+                        <li>Работа в салоне одежды за 70к/месяц</li>
+                        <li>437к долгов при нестабильном доходе</li>
+                        <li>Цель "200к в сентябре" от страха</li>
+                        <li>Копирование чужих методов</li>
+                        <li>Неясность в позиционировании</li>
+                        <li>Размытое понимание сильных сторон</li>
+                    </ul>
+                </div>
+                <div class="card card-after">
+                    <h3 class="card-title">СТАЛО</h3>
+                    <ul>
+                        <li>Четкое позиционирование: стратегический продюсер</li>
+                        <li>SMART-цель: качественный кейс до 30 сентября</li>
+                        <li>Понимание уникальности: "рентген мышления"</li>
+                        <li>Линейка продуктов от 15к до 100к</li>
+                        <li>Стратегия развития на 12 месяцев</li>
+                        <li>Работа только с растущими экспертами</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">7</div>
+                    <div>Ключей аутентичности проанализировано</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div>Техники поиска истинного "Я" применено</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div>Попадание в аутентичность</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">12</div>
+                    <div>Месяцев стратегии развития</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7 Keys Analysis -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">АНАЛИЗ ПО 7 КЛЮЧАМ АУТЕНТИЧНОСТИ</h2>
+            <div class="keys-grid">
+                <div class="key-card">
+                    <h3 class="key-title">КЛЮЧ №1 - ФИНАНСЫ БЕЗ ДОЛГОВ</h3>
+                    <span class="status status-attention">Требует внимания</span>
+                    <p>437к долгов сигнализируют о неправильном пути. Рекомендация: сосредоточиться на закрытии кредиток.</p>
+                </div>
+                
+                <div class="key-card">
+                    <h3 class="key-title">КЛЮЧ №2 - ПРАВИЛЬНОЕ ЦЕЛЕПОЛАГАНИЕ</h3>
+                    <span class="status status-progress">Скорректировано</span>
+                    <p>Изменена цель с "200к от страха" на "качественный кейс для репутации".</p>
+                </div>
+                
+                <div class="key-card">
+                    <h3 class="key-title">КЛЮЧ №3 - ОТНОШЕНИЯ КАК ЗЕРКАЛО</h3>
+                    <span class="status status-good">Хорошо</span>
+                    <p>Нашел эксперта, которая доверяет и заряжается энергией.</p>
+                </div>
+                
+                <div class="key-card">
+                    <h3 class="key-title">КЛЮЧ №4 - ТЕЛО КАК ИНДИКАТОР</h3>
+                    <span class="status status-good">Отлично</span>
+                    <p>Утренние ритуалы, йога, пробежки. Тело поддерживает выбранное направление.</p>
+                </div>
+                
+                <div class="key-card">
+                    <h3 class="key-title">КЛЮЧ №5 - НАЙТИ СВОЮ НИШУ</h3>
+                    <span class="status status-good">Найдено</span>
+                    <p>Стратегический ребилдинг экспертных блогов. Полный цикл: консалтинг + продюсирование.</p>
+                </div>
+                
+                <div class="key-card">
+                    <h3 class="key-title">КЛЮЧ №6 - КОНФИГУРАЦИЯ РАБОТЫ</h3>
+                    <span class="status status-good">Определена</span>
+                    <p>Роль стратега + реализатора. Работа в спокойной атмосфере с растущими экспертами.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Superpowers Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">НАЙДЕННЫЕ СУПЕРСИЛЫ</h2>
+            
+            <div class="superpower-card">
+                <h3 class="superpower-title">РЕНТГЕН МЫШЛЕНИЯ</h3>
+                <p>Видит не просто бизнес-процессы, а мышление эксперта. Анализирует проявленность, цели, реакции на жизненные ситуации.</p>
+            </div>
+            
+            <div class="superpower-card">
+                <h3 class="superpower-title">ФИЛОСОФ-ПРАКТИК</h3>
+                <p>Объясняет "что→как→почему" без споров. Решения приходят из потока. Признак стратегического мышления высокого уровня.</p>
+            </div>
+            
+            <div class="superpower-card">
+                <h3 class="superpower-title">РАБОТА С РАСТУЩИМИ</h3>
+                <p>Четко понимает своего клиента: эксперты, которые хотят скачок в доходе, мышлении и видении.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">ПЛАН ДЕЙСТВИЙ НА 12 МЕСЯЦЕВ</h2>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <h3 class="timeline-title">1-3 МЕСЯЦА: ФУНДАМЕНТ</h3>
+                    <ul>
+                        <li>Качественный кейс с текущей экспертшей</li>
+                        <li>Документирование процесса ребилдинга</li>
+                        <li>Создание портфолио "до и после"</li>
+                        <li>Начало ведения контента о работе</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3 class="timeline-title">3-6 МЕСЯЦЕВ: РОСТ</h3>
+                    <ul>
+                        <li>Запуск "Диагностики в прямом эфире"</li>
+                        <li>Поиск 2-3 экспертов уровня 100-300к</li>
+                        <li>Повышение чека до 50-70к</li>
+                        <li>Построение воронки через контент</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3 class="timeline-title">6-12 МЕСЯЦЕВ: МАСШТАБИРОВАНИЕ</h3>
+                    <ul>
+                        <li>Узнаваемость в нише ребилдинга</li>
+                        <li>Работа с крупными экспертами</li>
+                        <li>Система закрытых продаж</li>
+                        <li>Развитие личного бренда</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>АУТЕНТИЧНОСТЬ НАЙДЕНА</h2>
+            <p>Стратегический продюсер полного цикла</p>
+            <p>Эксперт по ребилдингу мышления и систем продаж</p>
+            <br>
+            <p><strong>Следующий шаг:</strong> Реализация плана и создание первого серьезного кейса</p>
+        </div>
+    </section>
+</body>
+</html>
